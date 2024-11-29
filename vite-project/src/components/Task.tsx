@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Button } from './Button';
+import { motion } from 'motion/react';
 interface props {
   title: string;
   note: string;
@@ -27,11 +28,20 @@ export function Task({
     setEditMode(!editMode);
   }
   return (
-    <div className="inline-block transition-all delay-75 text-left">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{
+        opacity: 1,
+        transition: { duration: 0.5 },
+      }}
+    >
       <div className="bg-purple-400 p-4 m-4 w-[400px]  rounded  flex flex-col gap-y-4">
         <div className="flex justify-between gap-4">
           {editMode ? (
-            <input
+            <motion.input
+              initial={{ height: 0, opacity: 1 }}
+              animate={{ height: 30, opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
               type="text"
               className="rounded bg-purple-500 border-b w-full p-1 text-white"
               value={newTitle}
@@ -74,12 +84,19 @@ export function Task({
         </div>
 
         {editMode ? (
-          <textarea
-            className="rounded bg-purple-500 border-b w-full p-1"
+          <motion.textarea
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 60, opacity: 1 }}
+            exit={{
+              height: 0,
+              opacity: 0,
+              transition: { duration: 0.2 },
+            }}
+            className="rounded bg-purple-500 border-b w-full p-1 resize-none overflow-hidden"
             value={newNote}
             onChange={e => setNewNote(e.target.value)}
             placeholder="Enter new note"
-          ></textarea>
+          ></motion.textarea>
         ) : (
           <p className="">{note}</p>
         )}
@@ -119,6 +136,6 @@ export function Task({
           </Button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
