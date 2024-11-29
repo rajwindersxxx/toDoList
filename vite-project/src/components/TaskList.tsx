@@ -19,7 +19,7 @@ export function TaskList({
 }: props) {
   return (
     <>
-      <div className="text-center">
+      <div className="">
         {records.map(item => (
           <Task
             title={item.title}

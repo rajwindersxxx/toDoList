@@ -13,8 +13,9 @@ export function InputForm({ onFormSubmit }: props) {
   const [note, setNote] = useState('');
   const uniqueId = crypto.randomUUID();
 
-  function handleFormData(e: React.FormEvent<HTMLFormElement>) {
+  function handleFormData(e: React.SyntheticEvent) {
     e.preventDefault();
+    if (!title && !note) return;
     const newRecord: {
       title: string;
       note: string;
@@ -27,17 +28,21 @@ export function InputForm({ onFormSubmit }: props) {
       id: uniqueId, // change is later
     };
     onFormSubmit(newRecord);
+    setTitle('');
+    setNote('');
   }
 
   return (
-    <div className="bg-purple-400 max-w-[600px]  m-4 rounded p-4  flex flex-col items-center gap-4 sm:mx-auto">
-      <h2 className="text-xl font-semibold text-white text-center">Create a task list</h2>
+    <div className="bg-purple-400 max-w-[600px]  m-4 rounded p-4  flex flex-col items-center gap-4 sm:mx-auto transition-all">
+      <h2 className="text-xl font-semibold text-white text-center">
+        Create a task list
+      </h2>
       <form
         className="w-full flex flex-col gap-4 h-full"
         onSubmit={handleFormData}
       >
         <input
-          className="w-full  rounded p-2 placeholder:text-gray-400"
+          className="title w-full  rounded p-2 placeholder:text-gray-400 "
           type="text"
           name="title"
           placeholder="Title"
@@ -46,15 +51,23 @@ export function InputForm({ onFormSubmit }: props) {
           required
         />
         <textarea
-          className="w-full rounded p-2 placeholder:text-gray-400 h-full group"
+          className="note w-full rounded p-2 placeholder:text-gray-400 h-full resize-none"
           name="note"
           placeholder="note"
           value={note}
           onChange={e => setNote(e.target.value)}
+          rows={2}
+          onKeyDown={e => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              // Submit the form here
+              handleFormData(e);
+            }
+          }}
           required
         ></textarea>
         <button
-          className="bg-purple-800 text-white px-4 py-2 rounded hover:bg-purple-900 group"
+          className="button bg-purple-800 text-white px-4 py-2 rounded hover:bg-purple-900"
           type="submit"
         >
           Add task

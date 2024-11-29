@@ -27,7 +27,7 @@ export function Task({
     setEditMode(!editMode);
   }
   return (
-    <div className="inline-block transition-all text-left">
+    <div className="inline-block transition-all delay-75 text-left">
       <div className="bg-purple-400 p-4 m-4 w-[400px]  rounded  flex flex-col gap-y-4">
         <div className="flex justify-between gap-4">
           {editMode ? (
