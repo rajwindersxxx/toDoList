@@ -1,3 +1,4 @@
+import { TaskStatus } from './TaskStatus';
 interface props {
   totalTasks: number;
   taskCompleted: number;
@@ -10,16 +11,18 @@ export function Header({ totalTasks, taskCompleted }: props) {
           ToDoList
         </h1>
         <ul className="flex gap-4">
-          <li className="text-lg font-bold text-purple-100">
-            Total: <span className="text-yellow-300">{totalTasks}</span>
-          </li>
-          <li className="text-lg font-bold text-purple-100">
-            Done: <span className="text-red-300">{taskCompleted}</span>
-          </li>
-          <li className="text-lg font-bold text-purple-100">
-            Left:
-            <span className="text-green-300">{totalTasks - taskCompleted}</span>
-          </li>
+          <TaskStatus className="text-yellow-400" value={totalTasks}>
+            Total
+          </TaskStatus>
+          <TaskStatus className="text-green-400" value={taskCompleted}>
+            Done
+          </TaskStatus>
+          <TaskStatus
+            className="text-red-400"
+            value={totalTasks - taskCompleted}
+          >
+            Left
+          </TaskStatus>
         </ul>
       </nav>
     </>
