@@ -35,11 +35,11 @@ export function Task({
         transition: { duration: 0.5 },
       }}
     >
-      <div className="bg-purple-400 p-4 m-4 w-[400px]  rounded  flex flex-col gap-y-4">
+      <div className="bg-purple-400 p-4 m-4 w-[400px]  rounded  flex flex-col justify-start gap-y-4">
         <div className="flex justify-between gap-4">
           {editMode ? (
             <motion.input
-              initial={{ height: 0, opacity: 1 }}
+              initial={{ height: 28, opacity: 1 }}
               animate={{ height: 30, opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               type="text"
@@ -85,7 +85,7 @@ export function Task({
 
         {editMode ? (
           <motion.textarea
-            initial={{ height: 0, opacity: 0 }}
+            initial={{ height: 24, opacity: 0 }}
             animate={{ height: 60, opacity: 1 }}
             exit={{
               height: 0,
