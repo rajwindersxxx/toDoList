@@ -39,9 +39,9 @@ export function Task({
         <div className="flex justify-between gap-4">
           {editMode ? (
             <motion.input
-              initial={{ height: 28, opacity: 1 }}
+              initial={{ height: 28, opacity: 0 }}
               animate={{ height: 30, opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
+              exit={{ height: 28, opacity: 0 }}
               type="text"
               className="rounded bg-purple-500 border-b w-full p-1 text-white"
               value={newTitle}
@@ -88,7 +88,7 @@ export function Task({
             initial={{ height: 24, opacity: 0 }}
             animate={{ height: 60, opacity: 1 }}
             exit={{
-              height: 0,
+              height: 24,
               opacity: 0,
               transition: { duration: 0.2 },
             }}
