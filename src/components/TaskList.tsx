@@ -27,9 +27,14 @@ export function TaskList({
               className="inline-block text-left"
               key={item.id}
               layout
-              initial={{ opacity: 0, y: 50, scale: 0.3 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
+              initial={{ opacity: 0, y: '-100%', scale: 0.3 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                transition: { duration: 0.3 },
+              }}
+              exit={{ opacity: 0, scale: 0.3, transition: { duration: 0.3 } }}
             >
               <Task
                 title={item.title}
