@@ -11,18 +11,30 @@ export function Header({ totalTasks, taskCompleted }: props) {
           ToDoList
         </h1>
         <ul className="flex gap-4">
-          <TaskStatus className="text-yellow-400" value={totalTasks}>
-            Total
-          </TaskStatus>
-          <TaskStatus className="text-green-400" value={taskCompleted}>
-            Done
-          </TaskStatus>
-          <TaskStatus
-            className="text-red-400"
-            value={totalTasks - taskCompleted}
+          <li
+            className={`text-lg font-bold text-purple-100 flex gap-1 overflow-hidden`}
           >
-            Left
-          </TaskStatus>
+            <TaskStatus className="text-yellow-400" value={totalTasks}>
+              Total
+            </TaskStatus>
+          </li>
+          <li
+            className={`text-lg font-bold text-purple-100 flex gap-1 overflow-hidden`}
+          >
+            <TaskStatus
+              className="text-red-400"
+              value={totalTasks - taskCompleted}
+            >
+              Pending
+            </TaskStatus>
+          </li>
+          <li
+            className={`text-lg font-bold text-purple-100 flex gap-1 overflow-hidden`}
+          >
+            <TaskStatus className="text-green-400" value={taskCompleted}>
+              Done
+            </TaskStatus>
+          </li>
         </ul>
       </nav>
     </>

@@ -6,13 +6,14 @@ interface props {
     note: string;
     isDone: boolean;
     id: string;
+    date: string;
   }) => void;
 }
 export function InputForm({ onFormSubmit }: props) {
   const [title, setTitle] = useState('');
   const [note, setNote] = useState('');
   const uniqueId = crypto.randomUUID();
-
+  const d = new Date();
   function handleFormData(e: React.SyntheticEvent) {
     e.preventDefault();
     if (!title && !note) return;
@@ -21,11 +22,13 @@ export function InputForm({ onFormSubmit }: props) {
       note: string;
       isDone: boolean;
       id: string;
+      date: string;
     } = {
+      id: uniqueId, // change is later
       title: title,
       note: note,
       isDone: false,
-      id: uniqueId, // change is later
+      date: d.toISOString(),
     };
     onFormSubmit(newRecord);
     setTitle('');
@@ -38,7 +41,7 @@ export function InputForm({ onFormSubmit }: props) {
         className="bg-purple-400 max-w-[600px]  m-4 rounded p-4  flex flex-col items-center gap-4 sm:mx-auto"
         initial={{ y: '-100%', opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ease: 'linear', duration: .3}}
+        transition={{ ease: 'linear', duration: 0.3 }}
       >
         <h2 className="text-xl font-semibold text-white text-center">
           Create a task list

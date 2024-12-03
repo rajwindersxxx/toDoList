@@ -8,9 +8,7 @@ interface props {
 
 export function TaskStatus({ children, value, className }: props) {
   return (
-    <li
-      className={`text-lg font-bold text-purple-100 flex gap-1 overflow-hidden`}
-    >
+    <>
       <p>{children}:</p>
       <span className={`inline-block w-3 h-4 ${className}`}>
         <AnimatePresence>
@@ -28,6 +26,6 @@ export function TaskStatus({ children, value, className }: props) {
           </motion.div>
         </AnimatePresence>
       </span>
-    </li>
+    </>
   );
 }
