@@ -45,6 +45,7 @@ export default function App() {
     );
     setRecords(() => updatedRecords);
   }
+  
   return (
     <>
       <Header totalTasks={records.length} taskCompleted={taskCompleted} />

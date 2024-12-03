@@ -11,15 +11,16 @@ export function TaskStatus({ children, value, className }: props) {
     <>
       <p>{children}:</p>
       <span className={`inline-block w-3 h-4 ${className}`}>
-        <AnimatePresence>
+        <AnimatePresence mode='wait'>
           <motion.div
             key={value}
             className="inline-block"
             initial={{ opacity: 0, y: '-100%' }}
-            animate={{
-              y: 0,
-              opacity: 1,
-              transition: { duration: 0.3 },
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: '100%' }}
+            transition={{
+              ease: 'linear',
+              duration: 0.3,
             }}
           >
             {value}
