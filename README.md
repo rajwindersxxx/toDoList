@@ -1,5 +1,4 @@
-=======
-# TodoList
-
-Tools used: React , Tailwind , Motion
->>>>>>> 31a6c2606c9d24050cc9a282ee6db3b7ffce702d
+# Fast react pizza
+A simple to-do list app built with React.js and Framer Motion, allowing users to add, modify, and delete tasks with smooth animations.
+## 🛠️ Tech Stack
+- **FrontEnd**: React.js , tailwindCss, Farmer Motion and browser LocalStroage 
